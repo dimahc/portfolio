@@ -1,17 +1,11 @@
-import { type KeyboardEvent } from 'react'
+import { useNavigation } from '@/context'
+import { useTranslation } from '@/hooks'
+import { NAVIGATION_SECTIONS } from '@/lib/constants'
+import { memo, type KeyboardEvent } from 'react'
 
-interface NavigationProps {
-  activeSection: string
-  setActiveSection: (section: string) => void
-}
-
-export default function Navigation({ activeSection, setActiveSection }: NavigationProps) {
-  const sections = [
-    { id: 'about', label: 'ABOUT' },
-    { id: 'experience', label: 'EXPERIENCE' },
-    { id: 'projects', label: 'PROJECTS' },
-    { id: 'contact', label: 'CONTACT' }
-  ]
+function Navigation() {
+  const { activeSection, setActiveSection } = useNavigation()
+  const { t } = useTranslation()
 
   const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>, sectionId: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -20,18 +14,22 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
   }
 
   return (
-    <nav className="space-y-4 mb-16">
-      {sections.map((section) => (
+    <nav className="space-y-4 mb-16" aria-label="Main navigation">
+      {NAVIGATION_SECTIONS.map((section) => (
         <div key={section.id}>
           <button
             onClick={() => setActiveSection(section.id)}
-            className={`nav-link ${activeSection === section.id ? 'text-white' : 'text-gray-400'}`}
+            className={`nav-link uppercase ${activeSection === section.id ? 'text-foreground' : 'text-muted'}`}
             onKeyDown={(e: KeyboardEvent<HTMLButtonElement>) => handleKeyPress(e, section.id)}
+            aria-label={t('navigation.ariaNavigateTo', { section: t(`navigation.${section.id}`) })}
+            aria-current={activeSection === section.id ? 'page' : undefined}
           >
-            {section.label}
+            {t(`navigation.${section.id}`)}
           </button>
         </div>
       ))}
     </nav>
   )
 }
+
+export default memo(Navigation)

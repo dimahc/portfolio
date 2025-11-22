@@ -1,0 +1,82 @@
+{
+  "about": {
+    "paragraphs": [
+      "Ingénieur Logiciel Backend avec plus de 4 ans d'expérience spécialisé dans les systèmes distribués, les pipelines de données et les applications cloud-native. Expert en Go, Python et technologies backend modernes.",
+      "Actuellement en contribution aux solutions de monitoring d'énergies renouvelables chez Univers (QoS Energy), où je développe des interfaces de communication évolutives et optimise les pipelines de traitement de données. Précédemment, j'ai construit des systèmes haute performance chez EXFO pour l'assurance de service réseau.",
+      "Passionné par le code propre, la conception de systèmes et les pratiques DevOps. Expérience avec l'architecture microservices, les systèmes de files d'attente (RabbitMQ, Kafka), l'orchestration de conteneurs (Kubernetes) et les plateformes cloud (AWS, Azure).",
+      "Fervent défenseur de l'apprentissage continu et du partage de connaissances. Je crois en la construction de systèmes robustes et maintenables qui résolvent des problèmes concrets tout en encadrant les équipes pour obtenir des résultats exceptionnels."
+    ],
+    "title": "À propos de moi"
+  },
+  "common": {
+    "copyright": "© {{year}} {{name}}. Tous droits réservés.",
+    "skipToContent": "Aller au contenu principal"
+  },
+  "contact": {
+    "cta": "Ouvert aux discussions sur les opportunités d'ingénierie backend, les défis d'architecture système, ou les collaborations potentielles. Construisons quelque chose de génial ensemble.",
+    "email": "Email",
+    "form": {
+      "emailPlaceholder": "Votre email",
+      "errorMessage": "Échec de l'envoi. Veuillez réessayer.",
+      "messagePlaceholder": "Votre message",
+      "namePlaceholder": "Votre nom",
+      "sendButton": "Envoyer",
+      "sending": "Envoi en cours...",
+      "successMessage": "Message envoyé avec succès! Je vous répondrai bientôt."
+    },
+    "formTitle": "Contactez-moi",
+    "linkedin": "LinkedIn",
+    "location": "Localisation",
+    "locationText": "Nantes, France",
+    "title": "Contact",
+    "validation": {
+      "emailInvalid": "Veuillez entrer un email valide",
+      "emailRequired": "L'email est requis",
+      "messageMinLength": "Le message doit contenir au moins 10 caractères",
+      "messageRequired": "Le message est requis",
+      "nameRequired": "Le nom est requis"
+    }
+  },
+  "experience": {
+    "skillsLabel": "Compétences",
+    "title": "Expériences professionnelles"
+  },
+  "export": {
+    "label": "CV",
+    "sections": {
+      "about": "Résumé Professionnel",
+      "databases": "Bases de données",
+      "education": "Formation",
+      "experience": "Expérience Professionnelle",
+      "frameworks": "Frameworks & Bibliothèques",
+      "languages": "Langages",
+      "projects": "Projets Sélectionnés",
+      "technologies": "Compétences Techniques",
+      "tools": "DevOps & Outils"
+    },
+    "tooltip": "Télécharger en PDF"
+  },
+  "hero": {
+    "cta": "Ouvert à la collaboration sur des projets backend stimulants, aux discussions sur l'architecture système, ou à l'exploration de nouvelles opportunités.",
+    "getInTouch": "Me contacter",
+    "subtitle": "Systèmes Distribués • Pipelines de Données • Infrastructure Cloud",
+    "tagline": "Construction de solutions backend évolutives avec Go, Python et technologies cloud modernes.",
+    "title": "Ingénieur Logiciel Backend"
+  },
+  "language": {
+    "switchTo": "Passer à l'anglais",
+    "switchToEnglish": "Switch to English",
+    "switchToFrench": "Passer au français"
+  },
+  "navigation": {
+    "about": "À propos",
+    "ariaNavigateTo": "Naviguer vers la section {{section}}",
+    "contact": "Contact",
+    "experience": "Expérience",
+    "projects": "Projets"
+  },
+  "projects": {
+    "skillsLabel": "Compétences",
+    "title": "Projets Professionnels et Académiques"
+  }
+}

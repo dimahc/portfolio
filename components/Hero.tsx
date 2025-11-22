@@ -1,89 +1,86 @@
+import { useNavigation } from '@/context'
+import { useTranslation } from '@/hooks'
+import { fadeIn, fadeInLeft, fadeInUp, getTransition } from '@/lib/animations'
+import { PERSONAL_INFO } from '@/lib/constants'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail } from 'lucide-react'
+import { memo } from 'react'
 
-interface HeroProps {
-  language: 'en' | 'fr'
-  setActiveSection: (section: string) => void
-}
-
-export default function Hero({ language, setActiveSection }: HeroProps) {
-  const content = {
-    en: {
-      title: 'Software Engineer (Backend)',
-      tagline: 'Make it simple. Make it possible.',
-      cta: 'Feel free to reach me out if you want to build something together, have any questions, or just want to connect.'
-    },
-    fr: {
-      title: 'Ingénieur Logiciel (Backend)',
-      tagline: 'Simplifier. Rendre possible.',
-      cta: 'N\'hésitez pas à me contacter si vous souhaitez construire quelque chose ensemble, avoir des réponses à vos questions, ou simplement échanger.'
-    }
-  }
+function Hero() {
+  const { t } = useTranslation()
+  const { setActiveSection } = useNavigation()
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <motion.div
-        className="space-y-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        className="space-y-3"
+        variants={fadeInUp}
+        initial="initial"
+        animate="animate"
+        transition={getTransition(0)}
       >
-        <h1 className="text-5xl md:text-6xl font-light">
-          Abdoul Hamid<br />
-          <span className="font-normal">COULIBALY</span>
+        <h1 className="text-4xl md:text-5xl font-light">
+          {PERSONAL_INFO.name.first}<br />
+          <span className="font-normal">{PERSONAL_INFO.name.last}</span>
         </h1>
-        <h2 className="text-2xl text-gray-400">{content[language].title}</h2>
+        <h2 className="text-xl md:text-2xl text-muted font-medium">{t('hero.title')}</h2>
+        <p className="text-base text-muted/80">{t('hero.subtitle')}</p>
       </motion.div>
 
       <motion.p
-        className="text-gray-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-lg text-muted max-w-2xl"
+        variants={fadeIn}
+        initial="initial"
+        animate="animate"
+        transition={getTransition(0.2)}
       >
-        {content[language].tagline}
+        {t('hero.tagline')}
       </motion.p>
 
       <motion.div
         className="flex items-center gap-6"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
+        variants={fadeInLeft}
+        initial="initial"
+        animate="animate"
+        transition={getTransition(0.4)}
       >
         <a
-          href="https://linkedin.com/in/abdoul-hamid-coulibaly"
+          href={PERSONAL_INFO.social.linkedin}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted hover:text-blue-400 transition-colors"
+          aria-label="LinkedIn"
         >
           <Linkedin size={24} />
         </a>
         <a
-          href="https://github.com/dimahluodba96"
+          href={PERSONAL_INFO.social.github}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted hover:text-blue-400 transition-colors"
+          aria-label="GitHub"
         >
           <Github size={24} />
         </a>
         <a
-          href="mailto:abdoulhamid.coulibaly@gmail.com"
+          href={`mailto:${PERSONAL_INFO.email.professional}`}
           className="text-muted hover:text-blue-400 transition-colors"
+          aria-label="Email"
         >
           <Mail size={24} />
         </a>
       </motion.div>
 
-      <div className="space-y-6">
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl">
-          {content[language].cta}
+      <div className="space-y-4">
+        <p className="text-base md:text-lg text-muted max-w-2xl">
+          {t('hero.cta')}
         </p>
         <button
           onClick={() => setActiveSection('contact')}
           className="get-in-touch group"
-          aria-label={language === 'en' ? 'Get in touch' : 'Me contacter'}
+          aria-label={t('hero.getInTouch')}
         >
-          <span>{language === 'en' ? 'Get in touch' : 'Me contacter'}</span>
+          <span>{t('hero.getInTouch')}</span>
           <svg
             className="ml-2 w-4 h-4 transform translate-x-0 group-hover:translate-x-1 transition-transform"
             fill="none"
@@ -102,3 +99,5 @@ export default function Hero({ language, setActiveSection }: HeroProps) {
     </div>
   )
 }
+
+export default memo(Hero)

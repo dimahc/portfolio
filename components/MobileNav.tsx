@@ -1,23 +1,16 @@
 'use client'
 
+import { useNavigation } from '@/context'
+import { useTranslation } from '@/hooks'
+import { NAVIGATION_SECTIONS } from '@/lib/constants'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
-interface MobileNavProps {
-  activeSection: string
-  setActiveSection: (section: string) => void
-}
-
-export default function MobileNav({ activeSection, setActiveSection }: MobileNavProps) {
+export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
-
-  const sections = [
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
-  ]
+  const { activeSection, setActiveSection } = useNavigation()
+  const { t } = useTranslation()
 
   const handleClick = (sectionId: string) => {
     setActiveSection(sectionId)
@@ -70,7 +63,7 @@ export default function MobileNav({ activeSection, setActiveSection }: MobileNav
           className="fixed inset-0 z-[100]"
           onClick={() => setIsOpen(false)}
         >
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-md" />
+          <div className="absolute inset-0 bg-background/90 backdrop-blur-md" />
           <div className="relative h-full flex flex-col items-center justify-center">
             <button
               onClick={(e) => {
@@ -86,15 +79,14 @@ export default function MobileNav({ activeSection, setActiveSection }: MobileNav
               className="flex flex-col items-center space-y-8"
               onClick={(e) => e.stopPropagation()}
             >
-              {sections.map((section) => (
+              {NAVIGATION_SECTIONS.map((section) => (
                 <button
                   key={section.id}
                   onClick={() => handleClick(section.id)}
-                  className={`text-2xl transition-colors hover:text-foreground ${
-                    activeSection === section.id ? 'text-foreground' : 'text-muted'
-                  }`}
+                  className={`text-2xl transition-colors hover:text-foreground ${activeSection === section.id ? 'text-foreground' : 'text-muted'
+                    }`}
                 >
-                  {section.label}
+                  {t(`navigation.${section.id}`)}
                 </button>
               ))}
             </nav>

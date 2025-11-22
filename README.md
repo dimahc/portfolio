@@ -34,12 +34,14 @@ A modern, responsive portfolio website built with Next.js 13, TypeScript, and Ta
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/portfolio.git
 cd portfolio
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 # or
@@ -47,10 +49,51 @@ npm install
 ```
 
 3. Run the development server:
+
 ```bash
 pnpm dev
 # or
 npm run dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Docker Deployment
+
+### Build and run with Docker
+
+```bash
+# Build the image
+docker build -t portfolio:latest .
+
+# Run the container
+docker run -p 3000:80 \
+  -e NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id \
+  -e NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id \
+  -e NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key \
+  portfolio:latest
+```
+
+### Using Docker Compose
+
+1. Create `.env.local` with your EmailJS credentials
+2. Run:
+
+```bash
+docker-compose up -d
+```
+
+Visit [http://localhost:3000](http://localhost:3000)
+
+## Environment Variables
+
+Create a `.env.local` file:
+pnpm dev
+
+# or
+
+npm run dev
+
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -58,12 +101,14 @@ npm run dev
 ## Project Structure
 
 ```
+
 ├── app/                   # Next.js 13 app directory
 │   ├── layout.tsx        # Root layout
 │   └── page.tsx          # Home page
 ├── components/           # React components
 ├── public/              # Static assets
 └── styles/             # Global styles
+
 ```
 
 ## Customization
